@@ -1,0 +1,49 @@
+---
+spring:
+  web.resources.static-locations: "file:./app"
+cds:
+  odata-v4.endpoint.path: "/api"
+  security.mock.users:
+    - name: admin
+      password: admin
+      roles:
+        - admin
+      attributes:
+        businessPartner:
+          - "10401010"
+    - name: user
+      password: user
+server.servlet.encoding:
+  charset: UTF-8
+  force: true
+
+---
+spring:
+  config.activate.on-profile: cloud
+cds:
+  remote.services:
+    - name: ZTEST_PROJECT_SRV
+      destination:
+        name: "myonprem"
+        suffix: "sap/opu/odata/sap/"
+        type: "odata-v2"
+
+---
+spring:
+  config.activate.on-profile: sqlite
+  datasource:
+    url: "jdbc:sqlite:sqlite.db"
+    driver-class-name: org.sqlite.JDBC
+    initialization-mode: never
+    hikari:
+      maximum-pool-size: 1
+---
+spring:
+  config.activate.on-profile: default
+  datasource:
+    url: "jdbc:sqlite:file::memory:?cache=shared"
+    driver-class-name: org.sqlite.JDBC
+    initialization-mode: always
+    hikari:
+      maximum-pool-size: 1
+      max-lifetime: 0

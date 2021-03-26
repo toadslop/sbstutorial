@@ -1,0 +1,119 @@
+{
+  "definitions": {
+    "ZTEST_PROJECT_SRV": {
+      "kind": "service"
+    },
+    "ZTEST_PROJECT_SRV.purchaseorders": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Ebeln": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "Bukrs": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Bstyp": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Bsart": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Bsakz": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Loekz": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Statu": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "purchaseorder_itm": {
+          "type": "cds.Association",
+          "target": "ZTEST_PROJECT_SRV.purchaseorder_itmSet",
+          "on": [
+            {
+              "ref": [
+                "purchaseorder_itm",
+                "Ebeln"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "Ebeln"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "ZTEST_PROJECT_SRV.purchaseorder_itmSet": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Ebeln": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "Ebelp": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "Matnr": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "Ematn": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "Werks": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Lgort": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Menge": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "Meins": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "purchaseorder": {
+          "type": "cds.Association",
+          "target": "ZTEST_PROJECT_SRV.purchaseorders",
+          "on": [
+            {
+              "ref": [
+                "purchaseorder",
+                "Ebeln"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "Ebeln"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
