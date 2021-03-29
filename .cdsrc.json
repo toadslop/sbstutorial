@@ -1,10 +1,15 @@
 {
-    "build": {
-        "target": "."
-    },
-    "requires": {
-        "db": {
-            "kind": "sql"
-        }
+  "build": {
+    "target": ".",
+    "tasks": [
+      {
+        "for": "java-cf"
+      }
+    ]
+  },
+  "requires": {
+    "db": {
+      "kind": "sql"
     }
+  }
 }

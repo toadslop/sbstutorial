@@ -47,3 +47,11 @@ spring:
     hikari:
       maximum-pool-size: 1
       max-lifetime: 0
+---
+# cds:
+#   remote.services:
+#     - name: ZTEST_PROJECT_SRV
+#       destination:
+#         name: "myonprem"
+#         suffix: "sap/opu/odata/sap/"
+#         type: "odata-v2"

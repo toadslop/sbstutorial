@@ -16,12 +16,11 @@
 
 		<!-- DEPENDENCIES VERSION -->
 		<jdk.version>1.8</jdk.version>
-		<cds.services.version>1.14.3</cds.services.version>
-		<spring.boot.version>2.4.3</spring.boot.version>
-		<cloud.sdk.version>3.38.0</cloud.sdk.version>
+		<cds.services.version>1.13.1</cds.services.version>
+		<spring.boot.version>2.4.1</spring.boot.version>
+		<cloud.sdk.version>3.37.0</cloud.sdk.version>
 
-		<node.version>v12.16.1</node.version>
-		<node.url>https://nodejs.org/dist/</node.url>
+		<node.version>v12.16.2</node.version>
 	</properties>
 
 	<modules>
@@ -57,6 +56,40 @@
 				<scope>import</scope>
 			</dependency>
 
+			<dependency>
+				<groupId>com.sap.cloud.sdk.s4hana</groupId>
+				<artifactId>s4hana-all</artifactId>
+				<version>${cloud.sdk.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.sap.cloud.sdk.s4hana</groupId>
+				<artifactId>s4hana-api-odata-onpremise-2020</artifactId>
+				<version>${cloud.sdk.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.sap.cloud.sdk.s4hana</groupId>
+				<artifactId>s4hana-api-odata-v4-onpremise-2020</artifactId>
+				<version>${cloud.sdk.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sap.cloud.sdk.s4hana</groupId>
+				<artifactId>s4hana-connectivity</artifactId>
+				<version>${cloud.sdk.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sap.cloud.sdk.s4hana</groupId>
+				<artifactId>s4hana-core</artifactId>
+				<version>${cloud.sdk.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.sap.cloud.sdk.cloudplatform</groupId>
+				<artifactId>cloudplatform-connectivity</artifactId>
+				<version>${cloud.sdk.version}</version>
+			</dependency>
+
 			<!-- MANAGE Spring XSUAA Library, because of Spring 2.4 incompatible version in Cloud SDK BOM -->
 			<dependency>
 				<groupId>com.sap.cloud.security.xsuaa</groupId>
@@ -87,6 +120,16 @@
 				<configuration>
 					<fork>false</fork>
 					<skip>true</skip>
+				</configuration>
+			</plugin>
+
+			<!-- SUREFIRE PLUGIN -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M5</version>
+				<configuration>
+					<failIfNoTests>false</failIfNoTests>
 				</configuration>
 			</plugin>
 
@@ -131,7 +174,7 @@
 						<configuration>
 							<rules>
 								<requireMavenVersion>
-									<version>3.5.0</version>
+									<version>3.5</version>
 								</requireMavenVersion>
 								<requireJavaVersion>
 									<version>${jdk.version}</version>
